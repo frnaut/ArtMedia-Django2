@@ -1,0 +1,15 @@
+{% extends "core/base.html" %}
+{% block content %}
+  <div class="d-flex m-5 justify-content-center">
+      <div class="m-5">
+          <form method="POST"> {% csrf_token %}
+            <p>Desea bloquear al usaurio "{{object.user}}?"</p>
+            {{form}}
+            <div class="d-flex justify-content-end">
+                <input class="btn btn-warning" type="submit" value="Confitmar">
+            </div>
+          </form>
+      </div>
+  </div>
+{% endblock content %}
+{% block title %}Bloquear usuario {% endblock title %}

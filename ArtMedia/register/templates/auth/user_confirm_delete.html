@@ -1,0 +1,14 @@
+{% extends "core/base.html" %}
+{% block content %}
+<div class="d-flex justify-content-center m-5">
+  <div class="m-md-5">
+      <form method="POST"> {% csrf_token %}
+        <p>Desea eliminar el perfil '{{object}}'?</p>
+        <div class="d-flex justify-content-end">
+          <input class="btn btn-danger" type="submit" value="Confirmar">
+        </div>
+    </form>
+  </div>
+</div>
+{% endblock content %}
+{% block title %}Elimianar Perfil {% endblock title %}

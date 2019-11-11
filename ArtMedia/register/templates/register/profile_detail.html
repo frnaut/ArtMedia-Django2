@@ -1,0 +1,47 @@
+{% extends "core/base.html" %}
+{% block content %}
+<main role="main">
+  <style>
+    .img-profile {
+      width: 150px;
+      height: 150px;
+      border-radius: 100px;
+    }
+
+  </style>
+  <div class="container">
+    <div class="m-5">
+      <h2>Perfil</h2>
+      <div class="mt-3 ml-5 mr-5 mb-5">
+        <div class=" mb-3">
+          {% if user.is_staff %}
+          <div>
+            <a class="btn btn-warning" href="{% url 'block-profile' object.user object.id %}">Bloquear</a>
+          </div>
+          {% endif %}
+          {% if object.block %}
+            <p class="text-danger">Usuario bloqueado por el administrador</p>
+          {% endif %}
+
+          <div class="m-5 row">
+            <div>
+              <img class="img-profile" src="{{object.avatar.url}}" alt="">
+            </div>
+            <div>
+              <h3 class="username">{{object.user}}</h3>
+              <a class="" href="{{object.link}}">{{object.link}}</a>
+            </div>
+          </div>
+          <div class="text-container">
+            <p>{{object.bio | truncatewords:100}}</p>
+            <a href="#">Leer completa</a>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+{% endblock content %}
+
+{% block title %}{{object.user}} {% endblock title %}

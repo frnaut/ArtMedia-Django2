@@ -1,0 +1,27 @@
+{% extends "core/base.html" %}
+{% block content %}
+{% load static %}
+<main role='main'>
+    <div class="container">
+        <style>
+            label{display: none;}
+            .username{color: blue;}
+            .profile-img{width: 100px; height: 100px; border-radius: 50px;}
+        </style>
+        <div class="row mt-3 mb-5">
+            <div class="col-md-9 mx-auto">
+                <h3>Editar Perfil</h3>
+                <h4>Nombre de Usuario: <span class="username">{{request.user}}</span></h4>
+                <a href="{{request.user.profile.avatar.url}}" target="_blank"><img class="profile-img mb-3" src="{{request.user.profile.avatar.url}}" alt="Imagen de perfil"></a>
+                <div>
+                    <form method="POST" enctype="multipart/form-data"> {% csrf_token %}
+                        {{form.as_p}}
+                        <input type="Submit" class="btn btn-block btn-primary" value="Actualizar">
+                    </form> 
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+{% endblock content %}
+{% block title %}Editar Perfil {% endblock title %}
